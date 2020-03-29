@@ -2,6 +2,8 @@ version: "3.7"
 services:
   redis:
     image: redis:alpine
+    volumes:
+      - redis_data:/data
     expose:
       - 6379
   app:
@@ -16,5 +18,9 @@ services:
       - NODE_ENV=development
       - PORT=3000
       - REDIS_URL=redis://redis
+      - SECRET_TOKEN=poop
     working_dir: /app
     command: sh -c 'yarn && node_modules/.bin/nodemon src/server'
+
+volumes:
+  redis_data: {}
