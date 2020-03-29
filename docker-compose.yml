@@ -1,6 +1,12 @@
 version: "3.7"
 services:
+  redis:
+    image: redis:alpine
+    expose:
+      - 6379
   app:
+    depends_on:
+      - redis
     image: node:alpine
     volumes:
       - ./:/app
@@ -9,5 +15,6 @@ services:
     environment:
       - NODE_ENV=development
       - PORT=3000
+      - REDIS_URL=redis://redis
     working_dir: /app
     command: sh -c 'yarn && node_modules/.bin/nodemon src/server'
