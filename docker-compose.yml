@@ -1,4 +1,4 @@
-version: "3.7"
+version: '3.7'
 services:
   redis:
     image: redis:alpine
@@ -20,7 +20,7 @@ services:
       - REDIS_URL=redis://redis
       - SECRET_TOKEN=${SECRET_TOKEN}
     working_dir: /app
-    command: sh -c 'yarn && yarn watch'
+    command: sh -c 'yarn && yarn start'
 
 volumes:
   redis_data: {}

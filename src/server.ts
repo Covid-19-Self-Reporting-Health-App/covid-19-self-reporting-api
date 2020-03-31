@@ -1,7 +1,9 @@
 require('dotenv').config();
-const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
+import express, {Response, Request} from 'express';
+import bodyParser from 'body-parser';
+import {router as apiRouter} from './api';
+
+const app: express.Application = express();
 
 // parse url-encoded query strings
 app.use(bodyParser.urlencoded({extended: false}));
@@ -9,17 +11,16 @@ app.use(bodyParser.urlencoded({extended: false}));
 // parse json bodies
 app.use(bodyParser.json());
 
-app.use('/api', require('./api'));
+app.use('/api', apiRouter);
 
-app.get('/', (req, res) => {
+app.get('/', (req: Request, res: Response) => {
   return res.send('Hello world!');
 });
 
 const PORT = process.env.PORT || 3000;
-const TOKEN = process.env.SECRET_TOKEN || "don't let me find this in prod!";
+export const TOKEN: string =
+  process.env.SECRET_TOKEN || "don't let me find this in prod!";
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
   console.log(`Your secret authorization token is ${TOKEN}`);
 });
-
-module.exports = {TOKEN};

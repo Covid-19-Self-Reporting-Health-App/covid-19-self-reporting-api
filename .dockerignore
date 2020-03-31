@@ -1,2 +1,15 @@
+# build files
 node_modules
+.build
+
+# package manager files
+yarn.lock
+yarn-debug.log
+yarn-error.log
 npm-debug.log
+
+# config files
+.env
+.git
+!README*.md
+*.md
