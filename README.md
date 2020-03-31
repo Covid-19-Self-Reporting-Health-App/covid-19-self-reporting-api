@@ -23,7 +23,6 @@ Starting covid-19-self-reporting-api_app_1   ... done
 
 ```bash
 $ yarn
-# yarn output
 $ yarn watch
 Server listening on port 3000
 Your secret authorization token is [SECRET_TOKEN]
