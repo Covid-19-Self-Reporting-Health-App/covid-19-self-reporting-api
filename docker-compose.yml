@@ -20,7 +20,7 @@ services:
       - REDIS_URL=redis://redis
       - SECRET_TOKEN=${SECRET_TOKEN}
     working_dir: /app
-    command: sh -c 'yarn && node_modules/.bin/nodemon src/server'
+    command: sh -c 'yarn && yarn watch'
 
 volumes:
   redis_data: {}
