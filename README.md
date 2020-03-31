@@ -27,3 +27,11 @@ $ yarn watch
 Server listening on port 3000
 Your secret authorization token is [SECRET_TOKEN]
 ```
+
+## Endpoints
+
+- `/api/daily`
+  - `GET /api/daily`: Get the most recent notice
+  - `POST /api/daily`: Post a new notice (Requires auth token in header)
+- `/api/history`
+  - WIP
