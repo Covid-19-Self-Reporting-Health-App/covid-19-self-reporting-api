@@ -2,7 +2,6 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const redisClient = require("./redis-client");
 
 // parse url-encoded query strings
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -13,7 +12,7 @@ app.use(bodyParser.json());
 app.use("/api", require("./api"));
 
 app.get("/", (req, res) => {
-  return res.send("Hello bitch!");
+  return res.send("Hello world!");
 });
 
 const PORT = process.env.PORT || 3000;
